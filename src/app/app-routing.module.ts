@@ -1,19 +1,35 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './pages/auth/login/login.component';
-import { RegisterComponent } from './pages/auth/register/register.component';
+import { GuestLayoutComponent } from './layouts/guest-layout/guest-layout.component';
+import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
+import { userRoutes } from './routes/user-layout.routes';
+import { guestRoutes } from './routes/guest-layout.routes';
+
 
 const routes: Routes = [
 
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  
+  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+
+  {
+    path: '',
+    component: GuestLayoutComponent,
+    children: guestRoutes,
+  },
+  {
+    path: '',
+    component: UserLayoutComponent,
+    children: userRoutes,
+  },
+  {
+    path: '**',
+    redirectTo: '/auth/login'
+ },
+
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false,useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
