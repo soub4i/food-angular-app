@@ -4,6 +4,7 @@ import { GuestLayoutComponent } from './layouts/guest-layout/guest-layout.compon
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { userRoutes } from './routes/user-layout.routes';
 import { guestRoutes } from './routes/guest-layout.routes';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -19,6 +20,8 @@ const routes: Routes = [
     path: '',
     component: UserLayoutComponent,
     children: userRoutes,
+    canActivate: [AuthGuardService] 
+
   },
   {
     path: '**',

@@ -6,16 +6,21 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    constructor(private http: HttpClient) { }
+
+    constructor(private http: HttpClient) { 
+
+        this.http.head('')
+    }
 
     login(username: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/login`, { username, password })
-            .pipe(map(user => {
-                if (user && user.token) {
-                    localStorage.setItem('currentUser', JSON.stringify(user));
+        return this.http.post<any>(`${environment.apiUrl}/login`, { email: username, password : password })
+            .pipe(map(data => {
+
+                if (data && data.user) {
+                    localStorage.setItem('currentUser', JSON.stringify(data.user));
                 }
 
-                return user;
+                return data.user;
             }));
     }
 

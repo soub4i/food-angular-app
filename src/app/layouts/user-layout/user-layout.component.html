@@ -1,29 +1,55 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Project name</a>
-    </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div><!--/.nav-collapse -->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>TailwindCss</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body>
+  <div class="min-h-screen background-cover relative">
+
+<header class="bg-orange h-12 shadow px-10">
+  <div class="flex items-center h-full">
+      <div class="w-1/2">
+        <p class="font-black text-3xl text-white tracking-wide">F<span class="text-black">oo</span>d <span class="text-black text-lg -ml-2">Delivery</span></p>
+      </div>
+      <div class="w-1/2 flex justify-end items-center h-full">
+        <div class="px-6">
+          <a href="#" class="text-white font-medium text-base hover:text-grey-light">Login</a>
+        </div>
+        <div class="px-6">
+          <a href="#" class="text-white font-medium text-base hover:text-grey-light">Register</a>
+        </div>
+        <div class="px-6 bg-white h-full flex items-center">
+          <a href="#" class="text-orange font-medium text-base flex items-center">
+            <span>
+              <svg class="fill-current text-orange h-6 w-6" id="Bold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>restaurant-food-truck</title>
+                <circle cx="5" cy="19.75" r="2" />
+                <path d="M24,3.25a1,1,0,0,0-1-1H9a1,1,0,0,0-1,1v3.5a.5.5,0,0,1-.5.5H5.84a1.78,1.78,0,0,0-1.536.9l-2.159,3.9L.37,13.819A1.237,1.237,0,0,0,0,14.71V19a1.252,1.252,0,0,0,1.25,1.25.262.262,0,0,0,.188-.081.255.255,0,0,0,.069-.193c0-.075-.007-.15-.007-.226a3.5,3.5,0,0,1,7,0,.5.5,0,0,0,.5.5h6a.5.5,0,0,0,.5-.5,3.5,3.5,0,0,1,7,0,.5.5,0,0,0,.5.5,1,1,0,0,0,1-1ZM8,11.5a.25.25,0,0,1-.25.25H4.955a.25.25,0,0,1-.211-.384l1.281-2.02a.5.5,0,0,1,.422-.232h1.3a.25.25,0,0,1,.25.25Zm12,1.75a.5.5,0,0,1-.5.5h-7a.5.5,0,0,1-.5-.5v-3a.5.5,0,0,1,.5-.5h7a.5.5,0,0,1,.5.5Zm.912-5.783a.5.5,0,0,1-.412.783h-9a.5.5,0,0,1-.412-.783l1.714-2.5a.5.5,0,0,1,.412-.217h5.572a.5.5,0,0,1,.412.217Z"
+                />
+                <circle cx="19" cy="19.75" r="2" />
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
   </div>
-</nav>
+</header>
 
-<div style="margin-top:60px">
 
-   <div class="text-center">
+
      
      <router-outlet></router-outlet>
-   </div>
+
+     
+   
+
 
 </div>
+</body>
+
+</html>

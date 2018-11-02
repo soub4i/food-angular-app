@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FoodsService   {
 
-  constructor(private api:ApiService){
+  resource: string = 'foods';
 
-    this.api.resource = 'foods';
+  
+  constructor(private api: ApiService) {
 
+    
   }
 
-
-  getFoods(){
-    return this.api.getAll();
+  public getAll(): Observable<any>{
+    return this.api
+      .get(this.resource);
   }
 
-  getFoodById(id:any){
-    return this.api.getById(id);
+  public create(data: any): Observable<any> {
+    return this.api
+      .post(this.resource, data);
   }
-
-
 
 
 }
