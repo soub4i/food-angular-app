@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-layout',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLayoutComponent implements OnInit {
 
-  constructor() { }
+  user:any = null ;
+
+  isConnected: boolean = false ;
+
+  constructor(private router:Router) { }
 
   ngOnInit() {
+
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+
+    if(this.user){
+      this.isConnected = true;
+    }
+
+  }
+
+  logout(){
+
+    localStorage.removeItem('currentUser');
+
+    this.router.navigate(['/auth/login']);
+
+
   }
 
 }

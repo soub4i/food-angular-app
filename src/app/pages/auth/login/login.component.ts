@@ -22,7 +22,14 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('login')
+
+    let user = JSON.parse(localStorage.getItem('currentUser'));
+
+    if(user){
+    
+      this.router.navigate(['/foods']);
+    }
+    
   }
 
   onLogin(){

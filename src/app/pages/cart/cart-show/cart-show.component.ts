@@ -20,7 +20,6 @@ export class CartShowComponent implements OnInit {
     this.cart = cart || [];
 
 
-
   }
 
   remove(index){
