@@ -1,16 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter  } from '@angular/core';
 import { FoodsService } from 'src/app/services/foods.service';
-
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-food-list',
   templateUrl: './food-list.component.html',
-  styleUrls: ['./food-list.component.scss']
-})
-export class FoodListComponent implements OnInit {
+  styleUrls: ['./food-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default
 
- foods: Array<any> = []
- cart: Array<any> = []
+
+})
+export class FoodListComponent implements OnInit  {
+
+ foods: Array<any> = [];
+ cart: Array<any> = [];
+
+ private eventsSubject: Subject<void> = new Subject<void>();
+
+ 
+
   constructor(private foodService:FoodsService) { }
+
+ 
 
   ngOnInit() {
 
@@ -22,7 +32,12 @@ export class FoodListComponent implements OnInit {
     this.foodService.getAll().subscribe(res => {
 
 
+
       let data =  JSON.parse(res._body);
+
+      console.log(data)
+
+
       this.foods =  data.food;
 
 
@@ -38,7 +53,7 @@ export class FoodListComponent implements OnInit {
 
     localStorage.setItem('cart', JSON.stringify(this.cart));
 
-    console.log(this.cart);
+    this.eventsSubject.next()
 
   }
 

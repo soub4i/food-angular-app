@@ -24,4 +24,4 @@
   </div>
 </div>
 
-<app-cart-show cart="cart" ></app-cart-show>
+<app-cart-show [events]="eventsSubject.asObservable()" cart="cart" ></app-cart-show>
