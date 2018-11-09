@@ -29,7 +29,14 @@ export class CartShowComponent implements OnInit ,OnChanges {
   ngOnInit() {
 
 
-   this.eventsSubscription = this.events.subscribe(() => console.log('notified') );
+   this.eventsSubscription = this.events.subscribe(() => {
+
+    let audio = new Audio();
+    audio.src = "../../../assets/beep.wav";
+    audio.load();
+    audio.play();
+    console.log('added to cart');
+   });
 
 
   }
