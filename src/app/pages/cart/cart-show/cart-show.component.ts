@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
 
@@ -8,23 +8,17 @@ import { Observable } from 'rxjs';
   styleUrls: ['./cart-show.component.scss'],
 
 })
-export class CartShowComponent implements OnInit ,OnChanges {
+export class CartShowComponent implements OnInit  {
 
 
   private eventsSubscription: any
+
   @Input('cart') cart: Array<any> = [];
 
   @Input() events: Observable<void>;
 
   constructor() { }
 
-  ngOnChanges(changes: SimpleChanges) {
-    
-    // changes.prop contains the old and the new value...
-
-    this.cart = JSON.parse(localStorage.getItem('cart'));
-    
-  }
 
   ngOnInit() {
 
@@ -36,6 +30,7 @@ export class CartShowComponent implements OnInit ,OnChanges {
     audio.load();
     audio.play();
     console.log('added to cart');
+
    });
 
 
