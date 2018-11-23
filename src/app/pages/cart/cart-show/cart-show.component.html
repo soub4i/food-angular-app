@@ -1,33 +1,55 @@
-<div class="absolute pin-r pin-t w-1/4 h-auto min-h-95vh mt-10 bg-white border border-orange shadow-lg">
-  <div class="flex flex-col min-h-95vh justify-center" [ngClass]=" { 'items-center' : cart.length == 0} ">
-    <svg *ngIf="cart.length == 0" class="fill-current h-16 w-16 text-grey-darker" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<div
+  class="absolute pin-r pin-t w-1/4 h-auto min-h-95vh mt-10 bg-white border border-orange shadow-lg"
+>
+  <div
+    class="flex flex-col min-h-95vh justify-center"
+    [ngClass]="{ 'items-center': cart.length == 0 }"
+  >
+    <svg
+      *ngIf="cart.length == 0"
+      class="fill-current h-16 w-16 text-grey-darker"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
       <title>shopping-basket-handle</title>
-      <path d="M22.5,13.625H1.5a.5.5,0,0,0-.488.607l1.841,8.325a1.459,1.459,0,0,0,1.466,1.068H19.681a1.459,1.459,0,0,0,1.466-1.068l0-.007,1.839-8.318a.5.5,0,0,0-.488-.607Zm-5,3v4a.75.75,0,0,1-1.5,0v-4a.75.75,0,0,1,1.5,0Zm-5,0v4a.75.75,0,0,1-1.5,0v-4a.75.75,0,0,1,1.5,0Zm-4.5,0v4a.75.75,0,0,1-1.5,0v-4a.75.75,0,0,1,1.5,0Z"
+      <path
+        d="M22.5,13.625H1.5a.5.5,0,0,0-.488.607l1.841,8.325a1.459,1.459,0,0,0,1.466,1.068H19.681a1.459,1.459,0,0,0,1.466-1.068l0-.007,1.839-8.318a.5.5,0,0,0-.488-.607Zm-5,3v4a.75.75,0,0,1-1.5,0v-4a.75.75,0,0,1,1.5,0Zm-5,0v4a.75.75,0,0,1-1.5,0v-4a.75.75,0,0,1,1.5,0Zm-4.5,0v4a.75.75,0,0,1-1.5,0v-4a.75.75,0,0,1,1.5,0Z"
       />
-      <path d="M22.5,8.625h-.254A.249.249,0,0,1,22,8.433L21.35,5.676c-.81-3.418-2.953-5.3-6.035-5.3H8.685C5.6.375,3.46,2.258,2.65,5.676L2,8.433a.249.249,0,0,1-.243.192H1.5a1.5,1.5,0,0,0-1.5,1.5v1a1.5,1.5,0,0,0,1.5,1.5h21a1.5,1.5,0,0,0,1.5-1.5v-1A1.5,1.5,0,0,0,22.5,8.625ZM5.084,6.252c.716-3.027,2.4-3.377,3.6-3.377h6.63c1.2,0,2.885.35,3.6,3.377l.43,1.815a.25.25,0,0,1-.243.308H4.9a.25.25,0,0,1-.243-.308Z"
+      <path
+        d="M22.5,8.625h-.254A.249.249,0,0,1,22,8.433L21.35,5.676c-.81-3.418-2.953-5.3-6.035-5.3H8.685C5.6.375,3.46,2.258,2.65,5.676L2,8.433a.249.249,0,0,1-.243.192H1.5a1.5,1.5,0,0,0-1.5,1.5v1a1.5,1.5,0,0,0,1.5,1.5h21a1.5,1.5,0,0,0,1.5-1.5v-1A1.5,1.5,0,0,0,22.5,8.625ZM5.084,6.252c.716-3.027,2.4-3.377,3.6-3.377h6.63c1.2,0,2.885.35,3.6,3.377l.43,1.815a.25.25,0,0,1-.243.308H4.9a.25.25,0,0,1-.243-.308Z"
       />
     </svg>
-    <span *ngIf="cart.length == 0"  class="font-medium text-lg text-grey-darker mt-4">Your Cart is Empty !</span>
-    <div *ngFor="let food of cart ; let i = index" >
-
-
-        <div class="bg-white mx-3 max-w-md shadow-lg rounded-lg overflow-hidden">
-            <div class="sm:flex sm:items-center px-6 py-4">
-              <img class="block h-16 sm:h-24 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" [src]="food.image" alt="">
-              <div class="text-center sm:text-left sm:flex-grow">
-                <div class="mb-4">
-                  <p class="text-xl leading-tight">{{food.title}}</p>
-                  <p class="text-sm leading-tight text-grey-dark">${{food.price}}</p>
-                </div>
-                <div class="float-right">
-                  <button (click)="remove(i)" class="text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-white border border-red text-red hover:bg-red hover:text-white">Remove</button>
-                </div>
-              </div>
+    <span
+      *ngIf="cart && cart.length == 0"
+      class="font-medium text-lg text-grey-darker mt-4"
+      >Your Cart is Empty !</span
+    >
+    <div *ngFor="let food of cart; let i = index">
+      <div class="bg-white mx-3 max-w-md shadow-lg rounded-lg overflow-hidden">
+        <div class="sm:flex sm:items-center px-6 py-4">
+          <img
+            class="block h-16 sm:h-24 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0"
+            [src]="food.image"
+            alt=""
+          />
+          <div class="text-center sm:text-left sm:flex-grow">
+            <div class="mb-4">
+              <p class="text-xl leading-tight">{{ food.title }}</p>
+              <p class="text-sm leading-tight text-grey-dark">
+                ${{ food.price }}
+              </p>
+            </div>
+            <div class="float-right">
+              <button
+                (click)="remove(i)"
+                class="text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-white border border-red text-red hover:bg-red hover:text-white"
+              >
+                Remove
+              </button>
             </div>
           </div>
-  </div>
-
-
-
+        </div>
+      </div>
+    </div>
   </div>
 </div>

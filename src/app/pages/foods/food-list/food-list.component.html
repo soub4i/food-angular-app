@@ -1,27 +1,32 @@
 <div class="min-h-95vh w-3/4 flex justify-center items-center">
   <div class="flex flex-wrap justify-center items-stretch w-2/3">
-
-
-    <div *ngFor="let food of foods ; let i = index " class="w-1/3 flex flex-col mb-4 px-4">
+    <div
+      *ngFor="let food of foods; let i = index"
+      class="w-1/3 flex flex-col mb-4 px-4"
+    >
       <div class="relative">
-        <img class="block h-64 w-full" [src]="food.image"
-          alt="">
-        <div class="px-2 py-1 bg-orange-dark absolute pin-t pin-r rounded shadow-lg -mr-4" style="transform: rotate(20deg)">
-          <span class="text-2xl text-white font-black">${{food.price}}</span>
+        <img class="block h-64 w-full" [src]="food.image" alt="" />
+        <div
+          class="px-2 py-1 bg-orange-dark absolute pin-t pin-r rounded shadow-lg -mr-4"
+          style="transform: rotate(20deg)"
+        >
+          <span class="text-2xl text-white font-black">${{ food.price }}</span>
         </div>
-        <div class="px-2 py-1 bg-white absolute pin-t mt-4 rounded-r shadow-lg -mr-4">
-            <span class="text-lg text-black font-semibold">{{food.title}}</span>
-          </div>
+        <div
+          class="px-2 py-1 bg-white absolute pin-t mt-4 rounded-r shadow-lg -mr-4"
+        >
+          <span class="text-lg text-black font-semibold">{{ food.title }}</span>
+        </div>
       </div>
       <div class="w-full">
-        <button (click)="addToCart(i)" class="shadow hover:bg-orange bg-orange-dark border border-orange w-full font-medium text-lg text-tracking text-white py-2">
+        <button
+          (click)="addToCart(i)"
+          class="shadow hover:bg-orange bg-orange-dark border border-orange w-full font-medium text-lg text-tracking text-white py-2"
+        >
           Add To Cart
         </button>
       </div>
     </div>
-    
-
   </div>
 </div>
-
-<app-cart-show [events]="eventsSubject.asObservable()" cart="cart" ></app-cart-show>
+<app-cart-show [cart]="cart"></app-cart-show>

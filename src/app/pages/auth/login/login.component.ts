@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
 
       }, 
       err => {
-        this.errorMessage = err.message || "Unothorized Action" ; 
+        this.errorMessage = err.message || "Unauthorized Action" ; 
       }
     )
 

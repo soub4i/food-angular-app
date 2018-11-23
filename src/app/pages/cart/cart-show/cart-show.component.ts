@@ -1,57 +1,27 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
-
+import { Component, OnInit, Input } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Component({
-  selector: 'app-cart-show',
-  templateUrl: './cart-show.component.html',
-  styleUrls: ['./cart-show.component.scss'],
-
+  selector: "app-cart-show",
+  templateUrl: "./cart-show.component.html",
+  styleUrls: ["./cart-show.component.scss"]
 })
-export class CartShowComponent implements OnInit  {
+export class CartShowComponent implements OnInit {
+  @Input("cart") cart;
 
-
-  private eventsSubscription: any
-
-  @Input('cart') cart: Array<any> = [];
-
-  @Input() events: Observable<void>;
-
-  constructor() { }
-
+  constructor() {}
 
   ngOnInit() {
-
-
-   this.eventsSubscription = this.events.subscribe(() => {
-
-    let audio = new Audio();
-    audio.src = "../../../assets/beep.wav";
-    audio.load();
-    audio.play();
-    console.log('added to cart');
-
-   });
-
-
+    console.log(this.cart);
   }
 
- 
-  
-
-
-  update(){
-
-    this.cart = JSON.parse(localStorage.getItem('cart'));
-
+  update() {
+    this.cart = JSON.parse(localStorage.getItem("cart"));
   }
 
-  remove(index){
-
+  remove(index) {
     this.cart.splice(index, 1);
 
-    localStorage.setItem('cart', JSON.stringify(this.cart));
-
-
+    localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 }

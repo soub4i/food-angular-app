@@ -16,8 +16,7 @@ export class FoodsService   {
   }
 
   public getAll(): Observable<any>{
-    return this.api
-      .get(this.resource);
+    return this.api.get(this.resource);
   }
 
   public create(data: any): Observable<any> {

@@ -1,61 +1,52 @@
-import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter  } from '@angular/core';
-import { FoodsService } from 'src/app/services/foods.service';
-import { Subject } from 'rxjs';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter
+} from "@angular/core";
+import { FoodsService } from "src/app/services/foods.service";
+import { Subject } from "rxjs";
 @Component({
-  selector: 'app-food-list',
-  templateUrl: './food-list.component.html',
-  styleUrls: ['./food-list.component.scss'],
+  selector: "app-food-list",
+  templateUrl: "./food-list.component.html",
+  styleUrls: ["./food-list.component.scss"],
   changeDetection: ChangeDetectionStrategy.Default
-
-
 })
-export class FoodListComponent implements OnInit  {
+export class FoodListComponent implements OnInit {
+  foods: Array<any> = [];
+  cart: Array<any> = [];
 
- foods: Array<any> = [];
- cart: Array<any> = [];
+  private eventsSubject: Subject<void> = new Subject<void>();
 
- private eventsSubject: Subject<void> = new Subject<void>();
-
- 
-
-  constructor(private foodService:FoodsService) { }
-
- 
+  constructor(private foodService: FoodsService) {}
 
   ngOnInit() {
+    let cart = JSON.parse(localStorage.getItem("cart"));
 
-    let cart = JSON.parse(localStorage.getItem('cart'));
+    console.log(cart);
 
     this.cart = cart || [];
 
+    this.foodService.getAll().subscribe(
+      res => {
+        let data = JSON.parse(res._body);
 
-    this.foodService.getAll().subscribe(res => {
+        console.log(data);
 
-
-
-      let data =  JSON.parse(res._body);
-
-      console.log(data)
-
-
-      this.foods =  data.food;
-
-
-    }, err => console.log(err));
-
+        this.foods = data.food;
+      },
+      err => console.log(err)
+    );
   }
 
-  addToCart(index){
-
+  addToCart(index) {
     console.log(index);
 
     this.cart.push(this.foods[index]);
 
-    localStorage.setItem('cart', JSON.stringify(this.cart));
+    localStorage.setItem("cart", JSON.stringify(this.cart));
 
-    this.eventsSubject.next()
-
+    this.eventsSubject.next();
   }
-
-
 }
